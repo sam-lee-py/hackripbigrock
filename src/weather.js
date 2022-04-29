@@ -1,7 +1,7 @@
-document.getElementById('test').addEventListener('click', a);
+document.getElementById('test').addEventListener('click', clickButton);
 // load the weather infomation 
 // getData();
-function a(){
+function clickButton() {
 
     getData();
 }
@@ -17,7 +17,7 @@ async function getData() {
             // get the weather information from weather api
             updateWeather(locationdata.city, data.description, data.temperature)
             } else {
-                throw new Error (respose.statusText);
+                throw new Error(respose.statusText);
             }
         } else {
             throw new Error(respose.statusText);
