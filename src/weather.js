@@ -1,10 +1,11 @@
-document.getElementById('test').addEventListener('click', a);
+// document.getElementById('test').addEventListener('click', clickButton);
+// function clickButton() {
+    
+    //     getData();
+    // }
 // load the weather infomation 
-// getData();
-function a(){
+getData();
 
-    getData();
-}
 async function getData() {
     try{
         const locationrespose = await fetch('https://geolocation-db.com/json/1');
@@ -17,7 +18,7 @@ async function getData() {
             // get the weather information from weather api
             updateWeather(locationdata.city, data.description, data.temperature)
             } else {
-                throw new Error (respose.statusText);
+                throw new Error(respose.statusText);
             }
         } else {
             throw new Error(respose.statusText);
@@ -31,8 +32,30 @@ async function getData() {
 function updateWeather(city, weather, temperature) {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    document.getElementById('weather').innerHTML = `
-    <div>${city}</div>
-    <div>${weather} ${temperature}</div>
-    <div>${date}</div>`
+    tem = Number(temperature.match(/\d/g).join(''));
+    var feeling = "Emmmmmmmmmmmmmmmmm~";
+    if (tem && tem > 28){
+        feeling = "HOT~!";
+    } else if (tem && tem < 16) {
+        feeling = "COLD~!";
+    } else if (tem) {
+        feeling = "not bad.";
+    } else {
+        feeling = "Oh no, I cant read it."
+    }
+    var typed = new Typed('.weather', {
+        //wait then type
+        strings:[
+            `Hello. I'm Big Rock...`,
+            `Today is ${date}`,
+            `${city} is ${weather} today.`,
+            `Temperature is ${temperature}`,
+            `Feels ${feeling}`,
+            `Anything i can help you `,
+        ],
+        typeSpeed: 50,
+        backSpeed: 0,
+        loop: false,
+        showCursor: false,
+    });
 }

@@ -4,14 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
     <title>Big Rock</title>
 </head>
 <body>
-    <head>head</head>
-    <a href = "./pages/recommendation.html">Recommendation</a>
 
-    <div id = "weather"></div>
-    <button id = "test">Click</button>
-    <script src="./src/weather.js"></script>
+  <div class="header">
+      <h1>WWBRD</h1>
+      <h4>what would big rock baulderstone do?</h4>
+  </div>
+
+  <div class="column content">
+      <label for="locations">ooops try find me in ...</label>
+      <select id="locations" name="locations">
+          <option value="location1">Aphrodites Rock</option>
+          <option value="location2">Devils Marbles</option>
+          <option value="location3">Immortal Bridge</option>
+          <option value="location4">location4</option>
+          <option value="location5">location5</option>
+          <option value="location6">location6</option>
+      </select>
+  </div>
+  <!-- <button type="button" class="btn btn-warning">advice</button>
+  <button type="button" class="btn btn-warning">activities</button> -->
+  <a href="https://google.com" class="button">advice</a>
+  <a href="https://google.com" class="button">activities</a>
+
+  <div id="imagediv">
+      <img id="mainimage" src="img/devilsMarblesDesk.jpg" >
+  </div>
+    
+  <main>
+  </main>
+  
+  <div class="footer">
+    
+  </div>
+
+  <script src="./src/main.js"></script>
+  <a href = "./pages/recommendation.html">Recommendation</a>
+
+  <div id = "weather"></div>
+  <button id = "test">Click</button>
+  <script src="./src/weather.js"></script>
 </body>  
+
 </html>
