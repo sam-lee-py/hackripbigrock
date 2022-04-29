@@ -1,11 +1,11 @@
-document.getElementById('test').addEventListener('click', a);
+//document.getElementById('test').addEventListener('click', a);
 // load the weather infomation 
 // getData();
 function a(){
 
     getData();
 }
-async function getData() {
+async function getWeather() {
     try{
         const locationrespose = await fetch('https://geolocation-db.com/json/1');
         if (locationrespose.ok){
@@ -13,9 +13,10 @@ async function getData() {
             // get the location  from geocation
             const respose = await fetch('https://goweather.herokuapp.com/weather/' + locationdata.city);
             if (respose.ok){
-            const data = await respose.json();
+            const weatherData = await respose.json();
             // get the weather information from weather api
-            updateWeather(locationdata.city, data.description, data.temperature)
+            updateWeather(locationdata.city, weatherData.description, weatherData.temperature)
+            return weatherData;
             } else {
                 throw new Error (respose.statusText);
             }
@@ -36,3 +37,5 @@ function updateWeather(city, weather, temperature) {
     <div>${weather} ${temperature}</div>
     <div>${date}</div>`
 }
+
+export {getWeather} 
