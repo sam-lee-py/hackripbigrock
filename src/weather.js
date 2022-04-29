@@ -1,26 +1,31 @@
 document.getElementById('test').addEventListener('click', a);
 // load the weather infomation 
 // getData();
+hideSpinner();
+
 function a(){
 
     getData();
+    
 }
 async function getData() {
     try{
-        const locationrespose = await fetch('https://geolocation-db.com/json/1');
-        if (locationrespose.ok){
-            const locationdata = await locationrespose.json();  
+        const locationresponse = await fetch('https://geolocation-db.com/json/1');
+        showSpinner();
+        if (locationresponse.ok){
+            const locationdata = await locationresponse.json();  
             // get the location  from geocation
-            const respose = await fetch('https://goweather.herokuapp.com/weather/' + locationdata.city);
-            if (respose.ok){
-            const data = await respose.json();
+            const response = await fetch('https://goweather.herokuapp.com/weather/' + locationdata.city);
+            if (response.ok){
+            const data = await response.json();
             // get the weather information from weather api
             updateWeather(locationdata.city, data.description, data.temperature)
+            hideSpinner();
             } else {
-                throw new Error (respose.statusText);
+                throw new Error (response.statusText);
             }
         } else {
-            throw new Error(respose.statusText);
+            throw new Error(response.statusText);
         }
     } catch (error) {
         console.log(error.message);
@@ -36,3 +41,16 @@ function updateWeather(city, weather, temperature) {
     <div>${weather} ${temperature}</div>
     <div>${date}</div>`
 }
+
+// Function to hide the Spinner
+function hideSpinner() {
+    document.getElementById('spinner')
+            .style.display = 'none';
+} 
+
+// Function to show the Spinner
+function showSpinner() {
+    document.getElementById('test').addEventListener('click', a);
+    document.getElementById('spinner')
+            .style.display = 'flex';
+} 
