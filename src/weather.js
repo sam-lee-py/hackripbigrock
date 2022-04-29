@@ -31,8 +31,32 @@ async function getData() {
 function updateWeather(city, weather, temperature) {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    document.getElementById('weather').innerHTML = `
-    <div>${city}</div>
-    <div>${weather} ${temperature}</div>
-    <div>${date}</div>`
+    tem = Number(temperature.replace( /^\D+/g, ''));
+    var feeling = "Emmmmmmmmmmmmmmmmm~";
+    if (tem && tem > 28){
+        feeling = "HOT~!";
+    } else if (tem && tem < 16) {
+        feeling = "COLD~!";
+    } else if (tem) {
+        feeling = "not bad.";
+    } else {
+        feeling = "Oh no, I cant read it."
+    }
+    var typed = new Typed('.anim', {
+        //wait then type
+
+        strings:[
+            `Hello. I'm Big Rock~`,
+            `You are in ${city}`,
+            `Today is ${date}`,
+            `${city} is ${weather} today.`,
+            `Temperature is ${temperature}`,
+            `It is ${feeling}`
+            
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true,
+    });
 }
+

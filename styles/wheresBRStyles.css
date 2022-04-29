@@ -1,0 +1,27 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+#br-west {
+    color: white;
+}
+
+/* #br-says{
+    color: white;
+} */
+
+#brPic {
+    width: 70px;
+    height: 70px;
+}
+
+#brPic {
+    background-color: gold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    transition: 0.7s;
+}
