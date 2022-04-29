@@ -3,8 +3,6 @@
     
     //     getData();
     // }
-
-
 // load the weather infomation 
 getData();
 
