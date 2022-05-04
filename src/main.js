@@ -1,12 +1,10 @@
-console.log("hello bitch")
-
 document.getElementById("locations").addEventListener("input", onchange)
 
-console.log(document.getElementById("locations"))
+// console.log(document.getElementById("locations"))
 
 function onchange(event) 
 {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     switch(event.target.value) 
     {
         case "location1":

@@ -58,3 +58,17 @@ html {
     position: fixed;
     top: 0;
   }
+
+  .footer {
+    min-height: 5vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: wheat;
+    color: white;
+    text-align: center;
+  }

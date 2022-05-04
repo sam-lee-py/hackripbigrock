@@ -1,4 +1,4 @@
-import {getWeather} from './weather.js'
+// import {getWeather} from './weather.js'
 
 function getCocktail() {
   fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
@@ -66,5 +66,30 @@ function getCocktail() {
   
   // getDateAndTime()
 
+async function getWeather() {
+  try{
+      const locationrespose = await fetch('https://geolocation-db.com/json/1');
+      if (locationrespose.ok){
+          const locationdata = await locationrespose.json();  
+          // get the location  from geocation
+          // console.log(locationdata);
+
+          const weatherrespose = await fetch('https://goweather.herokuapp.com/weather/' + locationdata.city);
+          if (weatherrespose.ok){
+          const weatherData = await weatherrespose.json();
+          // get the weather information from weather api
+          // console.log(weatherData);
+
+          return weatherData;
+          } else {
+              throw new Error("weatherrespose");
+          }
+      } else {
+          throw new Error("locationrespose");
+      }
+  } catch (err) {
+      console.log(err.message);
+  }
+}
 
 
