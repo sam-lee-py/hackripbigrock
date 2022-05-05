@@ -1,4 +1,5 @@
 getWeather();
+const apiKey = "32cfde07acd5578cca8cddf7e359f883";
 
 async function getWeather() {
     try{
@@ -8,13 +9,15 @@ async function getWeather() {
             // get the location  from geocation
             console.log(locationdata);
 
-            const weatherrespose = await fetch('https://goweather.herokuapp.com/weather/' + locationdata.city);
+            const weatherrespose = await fetch('http://api.weatherstack.com/current?access_key='+ apiKey +'&query=' + locationdata.city)
             if (weatherrespose.ok){
             const weatherData = await weatherrespose.json();
             // get the weather information from weather api
             console.log(weatherData);
+            console.log(weatherData.current.weather_descriptions[0])
+            console.log(weatherData.current.temperature)
 
-            updateWeather(locationdata.city, weatherData.description, weatherData.temperature);
+            updateWeather(locationdata.city, weatherData.current.weather_descriptions[0], weatherData.current.temperature);
 
             } else {
                 throw new Error("weatherrespose");
@@ -30,28 +33,15 @@ async function getWeather() {
 function updateWeather(city, weather, temperature) {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    if (weather && temperature) {
-        tem = Number(temperature.match(/\d/g).join(''));
-        var feeling = "Emmmmmmmmmmmmmmmmm~";
-        if (tem && tem > 28){
-            feeling = "HOT~!";
-        } else if (tem && tem < 16) {
-            feeling = "COLD~!";
-        } else if (tem) {
-            feeling = "not bad.";
-        } else {
-            feeling = "Oh no, I cant read it."
-        }
-
+    try{
         var text = [
             ``,
             `Hello. I'm Big Rock...`,
             `Today is ${date}`,
             `${city} is ${weather} today.`,
             `Temperature is ${temperature}`,
-            `Feels ${feeling}`,
         ];
-    } else {
+    } catch (e) {
         var text = [
             ``,
             `Hello. I'm Big Rock...`,
