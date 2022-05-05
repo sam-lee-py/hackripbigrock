@@ -9,4 +9,3 @@ API used:
 2. weatherstack, get weather information by city https://weatherstack.com/documentation
 3. Thecocktaildb, get the random cocktail https://www.thecocktaildb.com/api/json/v1/1/random.php
 4. Kanye, get the random advices https://api.kanye.rest
-5. Picsum, get the randome picture https://picsum.photos/1000
